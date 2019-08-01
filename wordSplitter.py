@@ -1,9 +1,10 @@
 #Incredibly important for finding all the matches inbetween observables and the string
 import re
+sub = ['P','Y','T','H','O','N','TH','PY','HO']
 
 #This is my mapping function. It splits the word up in almost all the possible ways
 #based on the observables you give it.
-def wordSplitter(inp,subs):
+def wordSplitter(inp,subs,debug=False):
     l = []
     #Looks through the observables and finds if it matches somewhere in the word
     for i in subs:
@@ -15,12 +16,20 @@ def wordSplitter(inp,subs):
             
             l += li
 
+    if debug:
+        print(l)
+        input('')
+    
     #Gets all the starting points. Matches which were found at the start of the world.
     #e.g. FISSION. F is a match at the start.
     maps = []
     for i in l:
         if i[0] == 0:
             maps.append(i)
+
+    if debug:
+        print(maps)
+        input('')
 
     #Recurses through the maps list and then ads on all the possible connecting pieces.
     #It continues until there is no pieces that connects to any of the maps anymore.
@@ -47,6 +56,9 @@ def wordSplitter(inp,subs):
                         fin = False
         
         maps = nmaps
+        if debug:
+            print(maps)
+            input('')
 
     for i in range(len(maps)):
         maps[i] = maps[i][2]
@@ -56,3 +68,6 @@ def wordSplitter(inp,subs):
 
     #Returns the mappings it got
     return maps
+
+if __name__ == "__main__":
+    wordSplitter('PYTHON',sub,True)

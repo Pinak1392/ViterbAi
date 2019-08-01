@@ -23,7 +23,9 @@ for i in os.listdir(f'{wavFile}'):
 
 exceptions = {
     'I':'AY',
-    'YOU':'Y UW'
+    'YOU':'Y UW',
+    'WE':'W IY',
+    'WHAT':'W AH T'
 }
 
 class Pronounce:
@@ -148,6 +150,8 @@ class Pronounce:
                         
                         #Puts result in sentPro
                         if result[1] != 0:
+                            if debug:
+                                print(result[0])
                             break
 
                 sentP.append(result[0])
@@ -339,4 +343,7 @@ def getObj():
     hmm = pickle.load(open("sav.p", "rb"))
     return hmm
 
-hmm = createObj()
+hmm = getObj()
+while True:
+    inp = input('')
+    hmm.pronounce(inp, True)
