@@ -56,9 +56,10 @@ def wordSplitter(inp,subs,debug=False):
                         fin = False
         
         maps = nmaps
+    
         if debug:
             print(maps)
-            input('')
+        
 
     for i in range(len(maps)):
         maps[i] = maps[i][2]

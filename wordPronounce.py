@@ -343,7 +343,4 @@ def getObj():
     hmm = pickle.load(open("sav.p", "rb"))
     return hmm
 
-hmm = getObj()
-while True:
-    inp = input('')
-    hmm.pronounce(inp, True)
+hmm = createObj()
